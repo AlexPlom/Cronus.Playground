@@ -4,7 +4,7 @@ using System.Runtime.Serialization;
 
 namespace Cronus.Contracts
 {
-    [DataContract(Name = "050a0d2b-7d01-41e6-bb48-0b8f9ef1aba7")]
+    [DataContract(Name = "6eaca9e7-be24-4a9a-941e-6fae94e63e69")]
     public class UserAggregate : AggregateRoot<UserAggregateState>
     {
         public UserAggregate() { }

@@ -1,3 +1,4 @@
+using Elders.Cronus;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 
@@ -14,7 +15,11 @@ namespace Cronus.Host
             Microsoft.Extensions.Hosting.Host.CreateDefaultBuilder(args)
                 .ConfigureServices((hostContext, services) =>
                 {
+                    services.AddOptions();
+                    services.AddLogging();
                     services.AddHostedService<Worker>();
+                    services.AddCronus(hostContext.Configuration);
+
                 });
     }
 }

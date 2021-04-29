@@ -13,8 +13,6 @@ namespace Cronus.Host
     {
         private readonly ILogger<Worker> _logger;
         private readonly ICronusHost cronusHost;
-        private IHost cronusApi;
-        IDisposable subscription;
 
         public Worker(IServiceProvider provider, ICronusHost cronusHost, ILogger<Worker> logger)
         {
@@ -32,6 +30,16 @@ namespace Cronus.Host
             cronusHost.Start();
 
             _logger.LogInformation("Service started");
+        }
+
+        public override Task StopAsync(CancellationToken cancellationToken)
+        {
+            _logger.LogInformation("Stopping service...");
+
+            cronusHost.Stop();
+
+            _logger.LogInformation("Service stopped!");
+            return Task.CompletedTask;
         }
     }
 }
